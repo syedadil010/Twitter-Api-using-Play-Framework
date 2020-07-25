@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyWebSocketActor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">actors</a> &gt; <span class="el_source">MyWebSocketActor.java</span></div><h1>MyWebSocketActor.java</h1><pre class="source lang-java linenums">package actors;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.TimeUnit;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import akka.NotUsed;
+import akka.actor.*;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
+import akka.stream.Materializer;
+import akka.stream.javadsl.Source;
+import play.libs.Json;
+import twitter.SearchResults;
+import twitter.Twitter;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.TwitterException;
+
+import static akka.pattern.PatternsCS.ask;
+import java.util.stream.Collectors;
+import akka.util.Timeout;
+
+
+public class MyWebSocketActor extends AbstractActor {
+
+<span class="nc" id="L32">	List&lt;String&gt; dummy = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L33">	JsonNode SampleJson = null;</span>
+<span class="nc" id="L34">	HashMap&lt;ActorRef,String&gt; map = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L35">	List&lt;SearchResults&gt; res = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L37">	int count = 0;</span>
+	public static Props props(ActorRef out) {
+<span class="nc" id="L39">		return Props.create(MyWebSocketActor.class, out);</span>
+	}
+
+<span class="nc" id="L42">	private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);</span>
+
+	private final ActorRef out;
+
+<span class="nc" id="L46">	public MyWebSocketActor(ActorRef out) {</span>
+<span class="nc" id="L47">		dummy.add(&quot;abc&quot;);</span>
+<span class="nc" id="L48">		dummy.add(&quot;bcd&quot;);</span>
+<span class="nc" id="L49">		SampleJson = Json.toJson(dummy);</span>
+<span class="nc" id="L50">		this.out = out;</span>
+<span class="nc" id="L51">	}</span>
+	  @Override
+	    public void preStart() {
+<span class="nc" id="L54">	       	context().actorSelection(&quot;/user/TwitterResultActor/&quot;)</span>
+<span class="nc" id="L55">	                 .tell(new TwitterResultActor.RegisterMsg(), self());</span>
+	       	
+<span class="nc" id="L57">	       	System.out.println(&quot;Started Server&quot;);</span>
+<span class="nc" id="L58">	    }</span>
+	  
+	  static public class TimeMessage {
+		  
+	      public final String res;
+<span class="nc" id="L63">	       public TimeMessage(String result) {</span>
+<span class="nc" id="L64">	    	   System.out.println(&quot;Before tell&quot;);</span>
+<span class="nc" id="L65">	           this.res = result;</span>
+<span class="nc" id="L66">	       }</span>
+	   }
+	  
+	  
+	   private void sendTime(TimeMessage msg) throws TwitterException {	  	
+<span class="nc" id="L71">		  System.out.println(&quot;At tell&quot;);</span>
+<span class="nc" id="L72">		  System.out.println(msg.res.toString());//msg.res.toString());</span>
+<span class="nc" id="L73">		  gettweets(msg.res.toString());</span>
+		//  final ObjectNode response = Json.newObject();
+	    //  response.put(&quot;response&quot; , Json.toJson(msg.res));
+		//  out.tell(response, self());
+		  
+<span class="nc" id="L78">	   }	</span>
+	   
+	   private void gettweets(String searchword) throws TwitterException {
+<span class="nc" id="L81">       	Twitter tweet = new Twitter(searchword);</span>
+<span class="nc" id="L82">       	CompletionStage&lt;QueryResult&gt; SearchResults = tweet.get() ;		</span>
+
+<span class="nc" id="L84">       	res.clear();</span>
+
+<span class="nc" id="L86">       	SearchResults.thenAccept( r -&gt; {</span>
+       		if (count == 0){
+       			count++ ;
+       			System.out.println(&quot;Am i called jsut once ??&quot;);
+       			SearchResults newres = null;
+       			int c =0 ;
+       			if (c &lt; 9){
+       				for (Status s : r.getTweets()){   
+       					c++;
+       					String TweetHandle = &quot;@&quot; +s.getUser().getScreenName();
+       					String Tweets = &quot;\t&quot; + s.getText();
+       					String word = searchword;
+       				    newres = new SearchResults(TweetHandle ,Tweets, word);
+       				    
+       					res.add(newres);   
+       				}
+       				sendtojs();
+       			}
+       		//	MyWebSocketActor.TimeMessage tMsg = new MyWebSocketActor.TimeMessage(res);
+       		//	userActors.forEach(ar -&gt; ar.tell(tMsg, self()));
+       		}else{
+       			System.out.println(&quot;Am i called at all ??&quot;);
+       			Status s = r.getTweets().get(0);
+       			String TweetHandle = &quot;@&quot; +s.getUser().getScreenName();
+       			//System.out.println(TweetHandle);
+       			String Tweets = &quot;\t&quot; + s.getText();        
+       			String word = searchword;
+       			SearchResults newres = new SearchResults(TweetHandle ,Tweets, word);
+       			List&lt;SearchResults&gt; res_temp = new ArrayList&lt;&gt;();
+       			res_temp.add(newres);
+       			sendtojs_temp(res_temp);
+       		//	MyWebSocketActor.TimeMessage tMsg = new MyWebSocketActor.TimeMessage(res_temp);
+       		//	userActors.forEach(ar -&gt; ar.tell(tMsg, self()));
+       		}
+       	}); 
+<span class="nc" id="L121">	   }</span>
+	   
+	   private void sendtojs() {
+		
+<span class="nc bnc" id="L125" title="All 2 branches missed.">	   for (SearchResults s : res ){</span>
+<span class="nc" id="L126">			  System.out.println(s.getHandle());</span>
+<span class="nc" id="L127">			   final ObjectNode response = Json.newObject();</span>
+<span class="nc" id="L128">			  response.put(&quot;response&quot; , Json.toJson(s));</span>
+<span class="nc" id="L129">			  out.tell(response, self()); </span>
+<span class="nc" id="L130">		  }</span>
+<span class="nc" id="L131">	   }</span>
+	   private void sendtojs_temp(List&lt;SearchResults&gt; res_temp) {
+<span class="nc bnc" id="L133" title="All 2 branches missed.">		   for (SearchResults s : res_temp ){</span>
+<span class="nc" id="L134">				  System.out.println(&quot;How many times am i looping ?&quot;);</span>
+<span class="nc" id="L135">				  final ObjectNode response = Json.newObject();</span>
+<span class="nc" id="L136">				  response.put(&quot;response&quot; , Json.toJson(s));</span>
+<span class="nc" id="L137">				  out.tell(response, self()); </span>
+<span class="nc" id="L138">			  }</span>
+<span class="nc" id="L139">		   }</span>
+	@Override
+	public Receive createReceive() {
+<span class="nc" id="L142">		return receiveBuilder().match(TimeMessage.class, this::sendTime).build();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>script.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">script.template.scala</span></div><h1>script.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import scala.collection.JavaConverters._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+
+<span class="fc" id="L25">object script extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[play.mvc.Http.Request,play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /**/
+  def apply/*1.2*/(request: play.mvc.Http.Request):play.twirl.api.HtmlFormat.Appendable = {
+<span class="fc" id="L29">    _display_ {</span>
+      {
+
+
+<span class="fc" id="L33">Seq[Any](format.raw/*1.34*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L35">  &quot;&quot;&quot;),format.raw/*3.3*/(&quot;&quot;&quot;&lt;!DOCTYPE html&gt; </span>
+  &lt;html&gt;
+  
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;title&gt;Reactive Tweets&lt;/title&gt;
+  
+  
+  &lt;h2&gt;Reactive Tweets&lt;/h2&gt;
+  &lt;body&gt;  
+
+  
+  &lt;input type=&quot;text&quot; id=&quot;name&quot; &gt;
+  &lt;br/&gt;
+    &lt;button type=&quot;button&quot; onclick=&quot;chk()&quot;&gt;submit&lt;/button&gt;
+   
+  
+  &lt;div id=&quot;output&quot;&gt;&lt;/div&gt; 
+  
+  &lt;script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'&gt;&lt;/script&gt;
+  &lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+
+  var output;
+
+  function init()
+<span class="fc" id="L59">  &quot;&quot;&quot;),format.raw/*27.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*27.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L60">    &quot;&quot;&quot;),format.raw/*28.5*/(&quot;&quot;&quot;output = document.getElementById(&quot;output&quot;);</span>
+
+<span class="fc" id="L62">  &quot;&quot;&quot;),format.raw/*30.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*30.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L64">  &quot;&quot;&quot;),format.raw/*32.3*/(&quot;&quot;&quot;function chk()&quot;&quot;&quot;),format.raw/*32.17*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*32.18*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L65">	  &quot;&quot;&quot;),format.raw/*33.4*/(&quot;&quot;&quot;var x = document.getElementById(&quot;name&quot;).value;</span>
+	  var n = &quot;http://localhost:9000/script?keyword=&quot;+x;
+	  testWebSocket(n);
+<span class="fc" id="L68">  &quot;&quot;&quot;),format.raw/*36.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*36.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L70">  &quot;&quot;&quot;),format.raw/*38.3*/(&quot;&quot;&quot;function testWebSocket(n)</span>
+<span class="fc" id="L71">  &quot;&quot;&quot;),format.raw/*39.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*39.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L72">    &quot;&quot;&quot;),format.raw/*40.5*/(&quot;&quot;&quot;websocket = new WebSocket(&quot;ws://localhost:9000/ws&quot;);</span>
+    
+    var xhttp = new XMLHttpRequest();
+	  
+	  xhttp.open(&quot;GET&quot;, n, true);
+	  xhttp.send();
+	  
+<span class="fc" id="L79">    websocket.onopen = function(evt) &quot;&quot;&quot;),format.raw/*47.38*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*47.39*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*47.40*/(&quot;&quot;&quot;onOpen(evt) &quot;&quot;&quot;),format.raw/*47.52*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*47.53*/(&quot;&quot;&quot;;</span>
+<span class="fc" id="L80">    websocket.onclose = function(evt) &quot;&quot;&quot;),format.raw/*48.39*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*48.40*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*48.41*/(&quot;&quot;&quot;onClose(evt) &quot;&quot;&quot;),format.raw/*48.54*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*48.55*/(&quot;&quot;&quot;;</span>
+<span class="fc" id="L81">    websocket.onmessage = function(evt) &quot;&quot;&quot;),format.raw/*49.41*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*49.42*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*49.43*/(&quot;&quot;&quot;onMessage(evt) &quot;&quot;&quot;),format.raw/*49.58*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*49.59*/(&quot;&quot;&quot;;</span>
+<span class="fc" id="L82">    websocket.onerror = function(evt) &quot;&quot;&quot;),format.raw/*50.39*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*50.40*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*50.41*/(&quot;&quot;&quot;onError(evt) &quot;&quot;&quot;),format.raw/*50.54*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*50.55*/(&quot;&quot;&quot;;</span>
+<span class="fc" id="L83">  &quot;&quot;&quot;),format.raw/*51.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*51.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L84">  &quot;&quot;&quot;),format.raw/*52.3*/(&quot;&quot;&quot;function onOpen(evt)</span>
+<span class="fc" id="L85">  &quot;&quot;&quot;),format.raw/*53.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*53.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L86">    &quot;&quot;&quot;),format.raw/*54.5*/(&quot;&quot;&quot;var sent_message = JSON.stringify(&quot;Handshake&quot;); </span>
+    doSend(sent_message);
+    writeToScreen(&quot;connected&quot;);
+<span class="fc" id="L89">  &quot;&quot;&quot;),format.raw/*57.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*57.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L91">  &quot;&quot;&quot;),format.raw/*59.3*/(&quot;&quot;&quot;function onClose(evt)</span>
+<span class="fc" id="L92">  &quot;&quot;&quot;),format.raw/*60.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*60.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L93">    &quot;&quot;&quot;),format.raw/*61.5*/(&quot;&quot;&quot;writeToScreen(&quot;DISCONNECTED&quot;);</span>
+<span class="fc" id="L94">  &quot;&quot;&quot;),format.raw/*62.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*62.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L96">  &quot;&quot;&quot;),format.raw/*64.3*/(&quot;&quot;&quot;function onMessage(evt)</span>
+<span class="fc" id="L97">  &quot;&quot;&quot;),format.raw/*65.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*65.4*/(&quot;&quot;&quot;</span>
+	
+<span class="fc" id="L99">	&quot;&quot;&quot;),format.raw/*67.2*/(&quot;&quot;&quot;var ResultObj = JSON.parse(evt.data);</span>
+	//writeToScreen(Result.Obj.response.tweets);
+	writeLinks(ResultObj.response);
+
+<span class="fc" id="L103">  &quot;&quot;&quot;),format.raw/*71.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*71.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L105">  &quot;&quot;&quot;),format.raw/*73.3*/(&quot;&quot;&quot;function onError(evt)</span>
+<span class="fc" id="L106">  &quot;&quot;&quot;),format.raw/*74.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*74.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L107">    &quot;&quot;&quot;),format.raw/*75.5*/(&quot;&quot;&quot;writeToScreen('&lt;span style=&quot;color: red;&quot;&gt;ERROR:&lt;/span&gt; ' + evt.data);</span>
+<span class="fc" id="L108">  &quot;&quot;&quot;),format.raw/*76.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*76.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L110">  &quot;&quot;&quot;),format.raw/*78.3*/(&quot;&quot;&quot;function doSend(message)</span>
+<span class="fc" id="L111">  &quot;&quot;&quot;),format.raw/*79.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*79.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L112">    &quot;&quot;&quot;),format.raw/*80.5*/(&quot;&quot;&quot;websocket.send(message);</span>
+<span class="fc" id="L113">  &quot;&quot;&quot;),format.raw/*81.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*81.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L115">  &quot;&quot;&quot;),format.raw/*83.3*/(&quot;&quot;&quot;function writeToScreen(message)</span>
+<span class="fc" id="L116">  &quot;&quot;&quot;),format.raw/*84.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*84.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L117">	   &quot;&quot;&quot;),format.raw/*85.5*/(&quot;&quot;&quot;var pre = document.createElement(&quot;p&quot;);</span>
+	   pre.style.wordWrap = &quot;break-word&quot;;
+	   pre.innerHTML = message;
+	   output.appendChild(pre);
+<span class="fc" id="L121">  &quot;&quot;&quot;),format.raw/*89.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*89.4*/(&quot;&quot;&quot;</span>
+  
+<span class="fc" id="L123">  &quot;&quot;&quot;),format.raw/*91.3*/(&quot;&quot;&quot;function writeTweets(message)</span>
+<span class="fc" id="L124">  &quot;&quot;&quot;),format.raw/*92.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*92.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L125">	   &quot;&quot;&quot;),format.raw/*93.5*/(&quot;&quot;&quot;var pre = document.createElement(&quot;p&quot;);</span>
+	   pre.style.wordWrap = &quot;break-word&quot;;
+	   pre.innerHTML = message;
+	   output.appendChild(pre);
+<span class="fc" id="L129">  &quot;&quot;&quot;),format.raw/*97.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*97.4*/(&quot;&quot;&quot;</span>
+  
+<span class="fc" id="L131">  &quot;&quot;&quot;),format.raw/*99.3*/(&quot;&quot;&quot;function writeLinks(message)</span>
+<span class="fc" id="L132">  &quot;&quot;&quot;),format.raw/*100.3*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*100.4*/(&quot;&quot;&quot;    </span>
+	
+<span class="fc" id="L134">	  &quot;&quot;&quot;),format.raw/*102.4*/(&quot;&quot;&quot;if(Boolean(!document.getElementById(message.words)))&quot;&quot;&quot;),format.raw/*102.56*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*102.57*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L135">		   &quot;&quot;&quot;),format.raw/*103.6*/(&quot;&quot;&quot;// Your existing code unmodified...</span>
+		var br = document.createElement(&quot;br&quot;);
+		var iDiv = document.createElement(&quot;div&quot;);
+		iDiv.id = message.words;
+		iDiv.style.height = &quot;200px&quot;;
+		        iDiv.style.width = &quot;auto&quot;;
+				iDiv.style.overflow='auto'
+		        iDiv.style.backgroundColor = '#BDBDBD';
+		document.getElementsByTagName('body')[0].appendChild(iDiv);
+		document.body.appendChild(br);
+
+		// Now create and append to iDiv
+		var br = document.createElement(&quot;br&quot;);
+		var str = message.handle;
+
+		    var result = str.link(&quot;https://localhost:9000/profile/&quot;+message.handle);
+		    var fullresult = message.words+result + message.tweets;
+		   
+		    document.getElementById(message.words).innerHTML = fullresult;
+		    document.getElementById(message.words).appendChild(br);
+
+		// The variable iDiv is still good... Just append to it.
+
+<span class="fc" id="L158">		&quot;&quot;&quot;),format.raw/*126.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*126.4*/(&quot;&quot;&quot;else&quot;&quot;&quot;),format.raw/*126.8*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*126.9*/(&quot;&quot;&quot;</span>
+
+		
+<span class="fc" id="L161">		&quot;&quot;&quot;),format.raw/*129.3*/(&quot;&quot;&quot;var br = document.createElement(&quot;br&quot;);</span>
+		var element = document.getElementById(message.words);
+		var str = message.handle;
+		    var result = str.link(&quot;https://localhost:9000/profile/&quot;+message.handle);
+		    var fullresult = message.words+result + message.tweets;
+		    document.getElementById(message.words).innerHTML += fullresult;
+
+		document.getElementById(message.words).appendChild(br);
+		// The variable iDiv is still good... Just append to it.
+
+<span class="fc" id="L171">		&quot;&quot;&quot;),format.raw/*139.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*139.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L172">		&quot;&quot;&quot;),format.raw/*140.3*/(&quot;&quot;&quot;var theLinks = document.getElementById(message.words).getElementsByTagName(&quot;a&quot;);</span>
+
+<span class="fc" id="L174">		  for(var i = 0; i &lt; theLinks.length; i++) &quot;&quot;&quot;),format.raw/*142.46*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*142.47*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L175">		    &quot;&quot;&quot;),format.raw/*143.7*/(&quot;&quot;&quot;theLinks[i].setAttribute('target','_blank');</span>
+
+<span class="fc" id="L177">		&quot;&quot;&quot;),format.raw/*145.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*145.4*/(&quot;&quot;&quot;</span>
+
+<span class="fc" id="L179">  &quot;&quot;&quot;),format.raw/*147.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*147.4*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L180">  &quot;&quot;&quot;),format.raw/*148.3*/(&quot;&quot;&quot;window.addEventListener(&quot;load&quot;, init, false);</span>
+
+  &lt;/script&gt;
+   
+  &lt;/body&gt;
+  &lt;/html&gt;&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="fc" id="L190">  def render(request:play.mvc.Http.Request): play.twirl.api.HtmlFormat.Appendable = apply(request)</span>
+
+<span class="nc" id="L192">  def f:((play.mvc.Http.Request) =&gt; play.twirl.api.HtmlFormat.Appendable) = (request) =&gt; apply(request)</span>
+
+<span class="nc" id="L194">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  DATE: Tue Apr 10 17:56:28 EDT 2018
+                  SOURCE: C:/Users/Arvin/Desktop/Sem5/App/Version 2.1_Hamburger/play-java-starter-example/app/views/script.scala.html
+                  HASH: 9108f77de28ca0ac11c338f5a5650dcc1c60a9b2
+                  MATRIX: 964-&gt;1|1091-&gt;33|1123-&gt;39|1632-&gt;521|1660-&gt;522|1693-&gt;528|1769-&gt;577|1797-&gt;578|1830-&gt;584|1872-&gt;598|1901-&gt;599|1933-&gt;604|2087-&gt;731|2115-&gt;732|2148-&gt;738|2204-&gt;767|2232-&gt;768|2265-&gt;774|2489-&gt;970|2518-&gt;971|2547-&gt;972|2587-&gt;984|2616-&gt;985|2685-&gt;1026|2714-&gt;1027|2743-&gt;1028|2784-&gt;1041|2813-&gt;1042|2884-&gt;1085|2913-&gt;1086|2942-&gt;1087|2985-&gt;1102|3014-&gt;1103|3083-&gt;1144|3112-&gt;1145|3141-&gt;1146|3182-&gt;1159|3211-&gt;1160|3243-&gt;1165|3271-&gt;1166|3302-&gt;1170|3353-&gt;1194|3381-&gt;1195|3414-&gt;1201|3553-&gt;1313|3581-&gt;1314|3614-&gt;1320|3666-&gt;1345|3694-&gt;1346|3727-&gt;1352|3788-&gt;1386|3816-&gt;1387|3849-&gt;1393|3903-&gt;1420|3931-&gt;1421|3964-&gt;1427|4115-&gt;1551|4143-&gt;1552|4176-&gt;1558|4228-&gt;1583|4256-&gt;1584|4289-&gt;1590|4389-&gt;1663|4417-&gt;1664|4450-&gt;1670|4505-&gt;1698|4533-&gt;1699|4566-&gt;1705|4621-&gt;1733|4649-&gt;1734|4682-&gt;1740|4744-&gt;1775|4772-&gt;1776|4805-&gt;1782|4974-&gt;1924|5002-&gt;1925|5037-&gt;1933|5097-&gt;1966|5125-&gt;1967|5158-&gt;1973|5327-&gt;2115|5355-&gt;2116|5390-&gt;2124|5450-&gt;2156|5479-&gt;2157|5519-&gt;2169|5600-&gt;2221|5630-&gt;2222|5665-&gt;2229|6555-&gt;3091|6584-&gt;3092|6616-&gt;3096|6645-&gt;3097|6683-&gt;3107|7176-&gt;3572|7205-&gt;3573|7237-&gt;3577|7395-&gt;3706|7425-&gt;3707|7461-&gt;3715|7539-&gt;3765|7568-&gt;3766|7602-&gt;3772|7631-&gt;3773|7663-&gt;3777
+                  LINES: 28-&gt;1|33-&gt;1|35-&gt;3|59-&gt;27|59-&gt;27|60-&gt;28|62-&gt;30|62-&gt;30|64-&gt;32|64-&gt;32|64-&gt;32|65-&gt;33|68-&gt;36|68-&gt;36|70-&gt;38|71-&gt;39|71-&gt;39|72-&gt;40|79-&gt;47|79-&gt;47|79-&gt;47|79-&gt;47|79-&gt;47|80-&gt;48|80-&gt;48|80-&gt;48|80-&gt;48|80-&gt;48|81-&gt;49|81-&gt;49|81-&gt;49|81-&gt;49|81-&gt;49|82-&gt;50|82-&gt;50|82-&gt;50|82-&gt;50|82-&gt;50|83-&gt;51|83-&gt;51|84-&gt;52|85-&gt;53|85-&gt;53|86-&gt;54|89-&gt;57|89-&gt;57|91-&gt;59|92-&gt;60|92-&gt;60|93-&gt;61|94-&gt;62|94-&gt;62|96-&gt;64|97-&gt;65|97-&gt;65|99-&gt;67|103-&gt;71|103-&gt;71|105-&gt;73|106-&gt;74|106-&gt;74|107-&gt;75|108-&gt;76|108-&gt;76|110-&gt;78|111-&gt;79|111-&gt;79|112-&gt;80|113-&gt;81|113-&gt;81|115-&gt;83|116-&gt;84|116-&gt;84|117-&gt;85|121-&gt;89|121-&gt;89|123-&gt;91|124-&gt;92|124-&gt;92|125-&gt;93|129-&gt;97|129-&gt;97|131-&gt;99|132-&gt;100|132-&gt;100|134-&gt;102|134-&gt;102|134-&gt;102|135-&gt;103|158-&gt;126|158-&gt;126|158-&gt;126|158-&gt;126|161-&gt;129|171-&gt;139|171-&gt;139|172-&gt;140|174-&gt;142|174-&gt;142|175-&gt;143|177-&gt;145|177-&gt;145|179-&gt;147|179-&gt;147|180-&gt;148
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

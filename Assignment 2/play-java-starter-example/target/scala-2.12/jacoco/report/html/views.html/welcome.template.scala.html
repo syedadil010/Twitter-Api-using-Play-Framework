@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>welcome.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">welcome.template.scala</span></div><h1>welcome.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import scala.collection.JavaConverters._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+
+<span class="nc" id="L25">object welcome extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,String,play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /**/
+<span class="nc" id="L28">  def apply/*1.2*/(message: String, style: String = &quot;java&quot;):play.twirl.api.HtmlFormat.Appendable = {</span>
+<span class="nc" id="L29">    _display_ {</span>
+      {
+
+
+<span class="nc" id="L33">Seq[Any](format.raw/*1.43*/(&quot;&quot;&quot;</span>
+
+<span class="nc" id="L35">&quot;&quot;&quot;),_display_(/*3.2*/defining(play.core.PlayVersion.current)/*3.41*/ { version =&gt;_display_(Seq[Any](format.raw/*3.54*/(&quot;&quot;&quot;</span>
+
+    &quot;&quot;&quot;),format.raw/*5.5*/(&quot;&quot;&quot;&lt;section id=&quot;top&quot;&gt;
+        &lt;div class=&quot;wrapper&quot;&gt;
+            &lt;h1&gt;&lt;a href=&quot;https://playframework.com/documentation/&quot;&quot;&quot;),_display_(/*7.67*/version),format.raw/*7.74*/(&quot;&quot;&quot;/Home&quot;&gt;&quot;&quot;&quot;),_display_(/*7.82*/message),format.raw/*7.89*/(&quot;&quot;&quot;&lt;/a&gt;&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;div id=&quot;content&quot; class=&quot;wrapper doc&quot;&gt;
+        &lt;article&gt;
+
+            &lt;h1&gt;Welcome to Play&lt;/h1&gt;
+
+            &lt;p&gt;
+                Congratulations, you’ve just created a new Play application. This page will help you with the next few steps.
+            &lt;/p&gt;
+
+            &lt;blockquote&gt;
+                &lt;p&gt;
+                    You’re using Play &quot;&quot;&quot;),_display_(/*22.40*/version),format.raw/*22.47*/(&quot;&quot;&quot;
+                &quot;&quot;&quot;),format.raw/*23.17*/(&quot;&quot;&quot;&lt;/p&gt;
+            &lt;/blockquote&gt;
+
+            &lt;h2&gt;Why do you see this page?&lt;/h2&gt;
+
+            &lt;p&gt;
+                The &lt;code&gt;conf/routes&lt;/code&gt; file defines a route that tells Play to invoke the &lt;code&gt;HomeController.index&lt;/code&gt; action
+                whenever a browser requests the &lt;code&gt;/&lt;/code&gt; URI using the GET method:
+            &lt;/p&gt;
+
+            &lt;pre&gt;&lt;code&gt;# Home page
+GET     /               controllers.HomeController.index&lt;/code&gt;&lt;/pre&gt;
+
+
+            &lt;p&gt;
+                Play has invoked the &lt;code&gt;controllers.HomeController.index&lt;/code&gt; method:
+            &lt;/p&gt;
+
+            &lt;pre&gt;&lt;code&gt;public Result index() &quot;&quot;&quot;),format.raw/*41.46*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*41.47*/(&quot;&quot;&quot;
+    &quot;&quot;&quot;),format.raw/*42.5*/(&quot;&quot;&quot;return ok(index.render(&quot;Your new application is ready.&quot;));
+&quot;&quot;&quot;),format.raw/*43.1*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*43.2*/(&quot;&quot;&quot;&lt;/code&gt;&lt;/pre&gt;
+
+            &lt;p&gt;
+                An action method handles the incoming HTTP request, and returns the HTTP result to send back to the web client.
+                Here we send a &lt;code&gt;200 OK&lt;/code&gt; response, using a template to fill its content.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                The template is defined in the &lt;code&gt;app/views/index.scala.html&lt;/code&gt; file and compiled as a standard Java class.
+            &lt;/p&gt;
+
+            &lt;pre&gt;&lt;code&gt;@(message: String)
+
+  @main(&quot;Welcome to Play&quot;) &quot;&quot;&quot;),format.raw/*56.29*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*56.30*/(&quot;&quot;&quot;
+
+  &quot;&quot;&quot;),format.raw/*58.3*/(&quot;&quot;&quot;@play20.welcome(message, style = &quot;Java&quot;)
+
+&quot;&quot;&quot;),format.raw/*60.1*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*60.2*/(&quot;&quot;&quot;&lt;/code&gt;&lt;/pre&gt;
+
+            &lt;p&gt;
+                The first line of the template defines the function signature. Here it just takes a single &lt;code&gt;String&lt;/code&gt; parameter.
+                Then this template calls another function defined in &lt;code&gt;app/views/main.scala.html&lt;/code&gt; which displays the HTML layout, and another
+                function that displays this welcome message. You can freely add any HTML fragment mixed with Scala code in this file.
+            &lt;/p&gt;
+
+            &lt;blockquote&gt;
+                &lt;p&gt;
+                    &lt;strong&gt;Note&lt;/strong&gt; that Scala is fully compatible with Java, so if you don’t know Scala don’t panic, a Scala statement is very similar to a Java one.
+                &lt;/p&gt;
+            &lt;/blockquote&gt;
+
+            &lt;p&gt;You can read more about &lt;a href=&quot;https://www.playframework.com/documentation/&quot;&quot;&quot;),_display_(/*74.94*/version),format.raw/*74.101*/(&quot;&quot;&quot;/ScalaTemplates&quot;&gt;Twirl&lt;/a&gt;, the template language used by Play, and how Play handles &lt;a href=&quot;https://www.playframework.com/documentation/&quot;&quot;&quot;),_display_(/*74.240*/version),format.raw/*74.247*/(&quot;&quot;&quot;/JavaActions&quot;&gt;actions&lt;/a&gt;.&lt;/p&gt;
+
+            &lt;h2&gt;Async Controller&lt;/h2&gt;
+
+            Now that you've seen how Play renders a page, take a look at &lt;code&gt;AsyncController.java&lt;/code&gt;, which shows how to do asynchronous programming when handling a request.  The code is almost exactly the same as &lt;code&gt;HomeController.java&lt;/code&gt;, but instead of returning &lt;code&gt;Result&lt;/code&gt;, the action returns &lt;code&gt;CompletionStage&amp;lt;Result&amp;gt;&lt;/code&gt; to Play.  When the execution completes, Play can use a thread to render the result without blocking the thread in the mean time.
+
+            &lt;p&gt;
+                &lt;a href=&quot;&quot;&quot;&quot;),_display_(/*81.27*/routes/*81.33*/.AsyncController.message),format.raw/*81.57*/(&quot;&quot;&quot;&quot;&gt;Click here for the AsyncController action!&lt;/a&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                You can read more about &lt;a href=&quot;https://www.playframework.com/documentation/&quot;&quot;&quot;),_display_(/*85.95*/version),format.raw/*85.102*/(&quot;&quot;&quot;/JavaAsync&quot;&gt;asynchronous actions&lt;/a&gt; in the documentation.
+            &lt;/p&gt;
+
+            &lt;h2&gt;Count Controller&lt;/h2&gt;
+
+            &lt;p&gt;
+                Both the HomeController and AsyncController are very simple, and typically controllers present the results of the interaction of several services.  As an example, see the &lt;code&gt;CountController&lt;/code&gt;, which shows how to inject a component into a controller and use the component when handling requests.  The count controller increments every time you click on it, so keep clicking to see the numbers go up.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                &lt;a href=&quot;&quot;&quot;&quot;),_display_(/*95.27*/routes/*95.33*/.CountController.count),format.raw/*95.55*/(&quot;&quot;&quot;&quot;&gt;Click here for the CountController action!&lt;/a&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                You can read more about &lt;a href=&quot;https://www.playframework.com/documentation/&quot;&quot;&quot;),_display_(/*99.95*/version),format.raw/*99.102*/(&quot;&quot;&quot;/JavaDependencyInjection&quot;&gt;dependency injection&lt;/a&gt; in the documentation.
+            &lt;/p&gt;
+
+            &lt;h2&gt;Need more info on the console?&lt;/h2&gt;
+
+            &lt;p&gt;
+                For more information on the various commands you can run on Play, i.e. running tests and packaging applications for production, see &lt;a href=&quot;https://playframework.com/documentation/&quot;&quot;&quot;),_display_(/*105.199*/version),format.raw/*105.206*/(&quot;&quot;&quot;/PlayConsole&quot;&gt;Using the Play console&lt;/a&gt;.
+            &lt;/p&gt;
+
+            &lt;h2&gt;Need to set up an IDE?&lt;/h2&gt;
+
+            &lt;p&gt;
+                You can start hacking your application right now using any text editor. Any changes will be automatically reloaded at each page refresh,
+                including modifications made to Scala source files.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                If you want to set-up your application in &lt;strong&gt;IntelliJ IDEA&lt;/strong&gt; or any other Java IDE, check the
+                &lt;a href=&quot;https://www.playframework.com/documentation/&quot;&quot;&quot;),_display_(/*117.71*/version),format.raw/*117.78*/(&quot;&quot;&quot;/IDE&quot;&gt;Setting up your preferred IDE&lt;/a&gt; page.
+            &lt;/p&gt;
+
+            &lt;h2&gt;Need more documentation?&lt;/h2&gt;
+
+            &lt;p&gt;
+                Play documentation is available at &lt;a href=&quot;https://www.playframework.com/documentation/&quot;&quot;&quot;),_display_(/*123.106*/version),format.raw/*123.113*/(&quot;&quot;&quot;&quot;&gt;https://www.playframework.com/documentation&lt;/a&gt;.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Play comes with lots of example templates showcasing various bits of Play functionality at &lt;a href=&quot;https://www.playframework.com/download#examples&quot;&gt;https://www.playframework.com/download#examples&lt;/a&gt;.
+            &lt;/p&gt;
+
+            &lt;h2&gt;Need more help?&lt;/h2&gt;
+
+            &lt;p&gt;
+                Play questions are asked and answered on Stackoverflow using the &quot;playframework&quot; tag: &lt;a href=&quot;https://stackoverflow.com/questions/tagged/playframework&quot;&gt;https://stackoverflow.com/questions/tagged/playframework&lt;/a&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                The &lt;a href=&quot;http://groups.google.com/group/play-framework&quot;&gt;Play Google Group&lt;/a&gt; is where Play users come to seek help,
+                announce projects, and discuss issues and new features. If you don’t have a Google account, you can still join the mailing
+                list by sending an e-mail to
+                &lt;strong&gt;play-framework+subscribe@googlegroups.com&lt;/strong&gt;.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Gitter is a real time chat channel, like IRC. The &lt;a href=&quot;https://gitter.im/playframework/playframework&quot;&gt;playframework/playframework&lt;/a&gt;  channel is used by Play users to discuss the ins and outs of writing great Play applications.
+            &lt;/p&gt;
+
+        &lt;/article&gt;
+
+        &lt;aside&gt;
+            &lt;h3&gt;Browse&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;https://playframework.com/documentation/&quot;&quot;&quot;),_display_(/*152.71*/version),format.raw/*152.78*/(&quot;&quot;&quot;&quot;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;https://playframework.com/documentation/&quot;&quot;&quot;),_display_(/*153.71*/version),format.raw/*153.78*/(&quot;&quot;&quot;/api/&quot;&quot;&quot;),_display_(/*153.84*/style),format.raw/*153.89*/(&quot;&quot;&quot;/index.html&quot;&gt;Browse the &quot;&quot;&quot;),_display_(/*153.114*/{style.capitalize}),format.raw/*153.132*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*153.133*/(&quot;&quot;&quot;API&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;h3&gt;Start here&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;https://playframework.com/documentation/&quot;&quot;&quot;),_display_(/*157.71*/version),format.raw/*157.78*/(&quot;&quot;&quot;/PlayConsole&quot;&gt;Using the Play console&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;https://playframework.com/documentation/&quot;&quot;&quot;),_display_(/*158.71*/version),format.raw/*158.78*/(&quot;&quot;&quot;/IDE&quot;&gt;Setting up your preferred IDE&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;https://playframework.com/download#examples&quot;&gt;Example Projects&lt;/a&gt;
+            &lt;/ul&gt;
+            &lt;h3&gt;Help here&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/tagged/playframework&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://groups.google.com/group/play-framework&quot;&gt;Mailing List&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;https://gitter.im/playframework/playframework&quot;&gt;Gitter Channel&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/aside&gt;
+
+    &lt;/div&gt;
+&quot;&quot;&quot;)))}))
+      }
+    }
+  }
+
+<span class="nc" id="L208">  def render(message:String,style:String): play.twirl.api.HtmlFormat.Appendable = apply(message,style)</span>
+
+<span class="nc" id="L210">  def f:((String,String) =&gt; play.twirl.api.HtmlFormat.Appendable) = (message,style) =&gt; apply(message,style)</span>
+
+<span class="nc" id="L212">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  DATE: Tue Apr 10 17:56:28 EDT 2018
+                  SOURCE: C:/Users/Arvin/Desktop/Sem5/App/Version 2.1_Hamburger/play-java-starter-example/app/views/welcome.scala.html
+                  HASH: 720f797d34143cb05c823ee1878e9c940c9fb2f3
+                  MATRIX: 957-&gt;1|1093-&gt;42|1121-&gt;45|1168-&gt;84|1218-&gt;97|1250-&gt;103|1391-&gt;218|1418-&gt;225|1452-&gt;233|1479-&gt;240|1891-&gt;625|1919-&gt;632|1964-&gt;649|2609-&gt;1266|2638-&gt;1267|2670-&gt;1272|2756-&gt;1331|2784-&gt;1332|3323-&gt;1845|3352-&gt;1846|3383-&gt;1850|3452-&gt;1893|3480-&gt;1894|4339-&gt;2726|4368-&gt;2733|4535-&gt;2872|4564-&gt;2879|5196-&gt;3484|5211-&gt;3490|5256-&gt;3514|5460-&gt;3691|5489-&gt;3698|6131-&gt;4313|6146-&gt;4319|6189-&gt;4341|6393-&gt;4518|6422-&gt;4525|6809-&gt;4883|6839-&gt;4890|7435-&gt;5458|7464-&gt;5465|7725-&gt;5697|7755-&gt;5704|9271-&gt;7193|9300-&gt;7200|9423-&gt;7295|9452-&gt;7302|9486-&gt;7308|9513-&gt;7313|9567-&gt;7338|9608-&gt;7356|9639-&gt;7357|9817-&gt;7507|9846-&gt;7514|9990-&gt;7630|10019-&gt;7637
+                  LINES: 28-&gt;1|33-&gt;1|35-&gt;3|35-&gt;3|35-&gt;3|37-&gt;5|39-&gt;7|39-&gt;7|39-&gt;7|39-&gt;7|54-&gt;22|54-&gt;22|55-&gt;23|73-&gt;41|73-&gt;41|74-&gt;42|75-&gt;43|75-&gt;43|88-&gt;56|88-&gt;56|90-&gt;58|92-&gt;60|92-&gt;60|106-&gt;74|106-&gt;74|106-&gt;74|106-&gt;74|113-&gt;81|113-&gt;81|113-&gt;81|117-&gt;85|117-&gt;85|127-&gt;95|127-&gt;95|127-&gt;95|131-&gt;99|131-&gt;99|137-&gt;105|137-&gt;105|149-&gt;117|149-&gt;117|155-&gt;123|155-&gt;123|184-&gt;152|184-&gt;152|185-&gt;153|185-&gt;153|185-&gt;153|185-&gt;153|185-&gt;153|185-&gt;153|185-&gt;153|189-&gt;157|189-&gt;157|190-&gt;158|190-&gt;158
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

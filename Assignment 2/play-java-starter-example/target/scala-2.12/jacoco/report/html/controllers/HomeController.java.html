@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HomeController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">controllers</a> &gt; <span class="el_source">HomeController.java</span></div><h1>HomeController.java</h1><pre class="source lang-java linenums">package controllers;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import actors.MyWebSocketActor;
+import actors.TwitterResultActor;
+import akka.Done;
+import akka.NotUsed;
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.http.javadsl.model.ws.TextMessage;
+import akka.stream.Materializer;
+import akka.stream.javadsl.Flow;
+import akka.stream.javadsl.Sink;
+import akka.stream.javadsl.Source;
+import akka.stream.scaladsl.Keep;
+import play.mvc.*;
+import play.mvc.Http.RequestHeader;
+import scala.compat.java8.FutureConverters;
+import services.Counter;
+import twitter.Twitter;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.TwitterException;
+import views.html.*;
+import views.*;
+
+import twitter4j.Query;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.conf.ConfigurationBuilder;
+import play.libs.streams.ActorFlow;
+import play.http.websocket.Message;
+import play.libs.concurrent.HttpExecutionContext;
+
+
+/**
+ * This controller contains an action to handle HTTP requests
+ * to the application's home page.
+ */
+public class HomeController extends Controller {
+
+    /**
+     * An action that renders an HTML page with a welcome message.
+     * The configuration in the &lt;code&gt;routes&lt;/code&gt; file means that
+     * this method will be called when the application receives a
+     * &lt;code&gt;GET&lt;/code&gt; request with a path of &lt;code&gt;/&lt;/code&gt;.
+     */
+	
+	public static play.mvc.Http.Request request ;
+    
+    @Inject
+    private ActorSystem actorSystem;
+    @Inject
+    private Materializer materializer;
+
+<span class="fc" id="L68">    @Inject public HomeController(ActorSystem system) {</span>
+<span class="fc" id="L69">        system.actorOf(TwitterResultActor.props(&quot;&quot;) , &quot;TwitterResultActor&quot;);</span>
+<span class="fc" id="L70">        }</span>
+
+    public Result index() {
+    	
+<span class="nc" id="L74">        return ok(index.render(&quot;Your new application is ready.&quot;));</span>
+    }
+    
+    public Result scripts() {
+<span class="fc" id="L78">    	request = request();</span>
+<span class="fc" id="L79">        return ok(script.render(request()));</span>
+    }
+    
+    public Result Search() {   		
+<span class="nc" id="L83">        return ok(mainview.render(&quot;Tweet Analytics&quot;)); </span>
+       
+    }
+	
+  public Result profile(String name) throws TwitterException ,InterruptedException ,ExecutionException{    	
+    	
+<span class="fc" id="L89">	    Twitter tweet = new Twitter(name);</span>
+	    
+<span class="fc" id="L91">  	    CompletableFuture&lt;String&gt; profileInfo = (CompletableFuture&lt;String&gt;) tweet.getProfile();</span>
+<span class="fc" id="L92">  	    CompletableFuture&lt;QueryResult&gt; FutureResult = (CompletableFuture&lt;QueryResult&gt;) tweet.get();</span>
+  	    
+<span class="fc" id="L94">  	    Thread.sleep(1000);</span>
+<span class="fc" id="L95">     	String Profile = getProfile(name);</span>
+<span class="fc" id="L96">    	List&lt;String&gt; Tweets = getDetails(name);</span>
+    	
+<span class="fc" id="L98">    	System.out.println(Tweets.toString());  </span>
+    	
+<span class="fc" id="L100">		return ok(profile.render(Profile, Tweets));</span>
+	}
+
+    public String getProfile (String Key)throws TwitterException, InterruptedException  {
+<span class="fc" id="L104">    	Twitter tweet = new Twitter(Key);</span>
+    	
+<span class="fc" id="L106">    	CompletableFuture&lt;String&gt; profileInfo = (CompletableFuture&lt;String&gt;) tweet.getProfile();</span>
+    	
+    	
+		try {
+<span class="fc" id="L110">			return profileInfo.get() ;</span>
+<span class="nc" id="L111">		} catch (ExecutionException e) {</span>
+			// TODO Auto-generated catch block
+<span class="nc" id="L113">			e.printStackTrace();</span>
+		}
+       
+<span class="nc" id="L116">		return null;</span>
+    }
+    
+    public List&lt;String&gt; getDetails (String Key)throws TwitterException, InterruptedException  {
+    	
+<span class="fc" id="L121">    	Twitter tweet = new Twitter(Key);</span>
+<span class="fc" id="L122">    	CompletableFuture&lt;List&lt;Status&gt;&gt; FutureList = (CompletableFuture&lt;List&lt;Status&gt;&gt;) tweet.getDetails();</span>
+<span class="fc" id="L123">    	List&lt;String&gt; res = new ArrayList&lt;&gt;();</span>
+    	
+<span class="fc" id="L125">    	FutureList.thenAccept(s -&gt;  s.stream()</span>
+    			                    .map(f -&gt; f.getText())
+    			                    .limit(10)
+    			                    .forEach(res::add));
+<span class="fc" id="L129">    	return res;</span>
+    	
+     }
+    
+    public WebSocket socket() {
+<span class="nc" id="L134">        return  WebSocket.Json.accept(request -&gt;</span>
+                ActorFlow.actorRef(MyWebSocketActor::props,
+                        actorSystem, materializer));
+    }
+    
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

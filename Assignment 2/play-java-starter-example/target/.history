@@ -1,0 +1,196 @@
+compile
+eclipse
+sbt run
+sbt compile
+compile
+eclipse
+sbt
+sbt 
+compile
+eclipse
+compile
+sbt run
+compile
+import akka.actor.*;
+public class MyWebSocketActor extends UntypedActor {
+    public static Props props(ActorRef out) {
+        return Props.create(MyWebSocketActor.class, out);
+    }
+    private final ActorRef out;
+    public MyWebSocketActor(ActorRef out) {
+        this.out = out;
+    }
+    public void onReceive(Object message) throws Exception {
+        if (message instanceof String) {
+            out.tell("I received your message: " + message, self());
+        }
+    }
+compile
+sbt
+compile
+eclipse
+compile
+sbt run
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+sbt
+compile
+run
+sbt
+compile
+run
+compile
+sbt
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+sbt -jvm-debug 9999
+-jvm-debug 9999
+run
+compile
+run
+compile
+run
+compile
+sbt
+compile
+run
+compile
+run
+compile
+run
+compie
+compile
+run
+cpmpile
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+test
+run
+compile
+sbt
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+exit
+run
+exit
+run
+compile
+run
+exit
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+exit
+run
+exit
+run
+compile
+run
+exit
+run
+ru
+run
+compile
+run
+test
+compile
+test
+compile
+test
+compile
+test
+jacoco
+compile
+test
+compile
+test
+jacoco
+run
+test
+compile
+run
+doc
+sbt jacoco
+jacoco

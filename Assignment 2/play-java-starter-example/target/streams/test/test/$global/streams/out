@@ -1,0 +1,42 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector(-Djacoco-agent.destfile=C:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\target\scala-2.12\jacoco\data\jacoco.exec)[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 1 initial tasks for 1 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(Twitteractortesting, sbt.ForkMain$AnnotatedFingerscan@6d4d082a, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTwitteractortesting[0m.[36mtestHelloActor[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest [33mTwitteractortesting[0m.[31mtestHelloActor[0m failed: java.util.concurrent.[31mExecutionException[0m: akka.pattern.AskTimeoutException: Ask timed out on [Actor[akka://default/user/TwitterResultActor#1810970749]] after [1000 ms]. Sender[null] sent message of type "java.lang.String"., took 1.143 sec[0m
+[0m[[0m[31merror[0m] [0m[0m    at java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)[0m
+[0m[[0m[31merror[0m] [0m[0m    at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1999)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.java8.FuturesConvertersImpl$CF.super$get(FutureConvertersImpl.scala:82)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.java8.FuturesConvertersImpl$CF.$anonfun$get$1(FutureConvertersImpl.scala:82)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.BlockContext$DefaultBlockContext$.blockOn(BlockContext.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.package$.blocking(package.scala:142)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.java8.FuturesConvertersImpl$CF.get(FutureConvertersImpl.scala:82)[0m
+[0m[[0m[31merror[0m] [0m[0m    at Twitteractortesting.testHelloActor([35mTwitteractortesting.java[0m:[33m67[0m)[0m
+[0m[[0m[31merror[0m] [0m[0m    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
+[0m[[0m[31merror[0m] [0m[0m    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
+[0m[[0m[31merror[0m] [0m[0m    at java.lang.reflect.Method.invoke(Method.java:564)[0m
+[0m[[0m[31merror[0m] [0m[0m    ...[0m
+[0m[[0m[31merror[0m] [0m[0mCaused by: akka.pattern.AskTimeoutException: Ask timed out on [Actor[akka://default/user/TwitterResultActor#1810970749]] after [1000 ms]. Sender[null] sent message of type "java.lang.String".[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.pattern.PromiseActorRef$.$anonfun$defaultOnTimeout$1(AskSupport.scala:595)[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.pattern.PromiseActorRef$.$anonfun$apply$1(AskSupport.scala:605)[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.actor.Scheduler$$anon$4.run(Scheduler.scala:140)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.Future$InternalCallbackExecutor$.unbatchedExecute(Future.scala:866)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.BatchingExecutor.execute(BatchingExecutor.scala:109)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.BatchingExecutor.execute$(BatchingExecutor.scala:103)[0m
+[0m[[0m[31merror[0m] [0m[0m    at scala.concurrent.Future$InternalCallbackExecutor$.execute(Future.scala:864)[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.actor.LightArrayRevolverScheduler$TaskHolder.executeTask(LightArrayRevolverScheduler.scala:328)[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.actor.LightArrayRevolverScheduler$$anon$4.executeBucket$1(LightArrayRevolverScheduler.scala:279)[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.actor.LightArrayRevolverScheduler$$anon$4.nextTick(LightArrayRevolverScheduler.scala:283)[0m
+[0m[[0m[31merror[0m] [0m[0m    at akka.actor.LightArrayRevolverScheduler$$anon$4.run(LightArrayRevolverScheduler.scala:235)[0m
+[0m[[0m[31merror[0m] [0m[0m    ... 1 more[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTwitteractortesting[0m.[36mtestHelloActor[0m finished, took 1.159 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[31m1 failed[0m[34m, [0m[34m0 ignored[0m[34m, 1 total, 4.478s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
+[0m[[0m[31merror[0m] [0m[0mFailed: Total 1, Failed 1, Errors 0, Passed 0[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	Twitteractortesting[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

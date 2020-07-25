@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Twitter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">twitter</a> &gt; <span class="el_source">Twitter.java</span></div><h1>Twitter.java</h1><pre class="source lang-java linenums">package twitter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Future;
+
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.* ;
+
+/**
+ * This is a new class
+ * @author Arvin
+ *
+ */
+public class Twitter {
+	String data;
+	
+<span class="fc" id="L25">	public Twitter(String SearchString) {</span>
+<span class="fc" id="L26">		data = SearchString;</span>
+<span class="fc" id="L27">	}</span>
+		
+	/**
+	 * This is a method used to search tweets
+	 * @return
+	 * @throws TwitterException
+	 */
+	@SuppressWarnings(&quot;unchecked&quot;)
+	public CompletionStage&lt;QueryResult&gt; get() throws TwitterException  {
+		// TODO Auto-generated method stub
+<span class="fc" id="L37">		CompletableFuture&lt;QueryResult&gt; futureResult = new CompletableFuture&lt;&gt;();</span>
+<span class="fc" id="L38">		ConfigurationBuilder cb = new ConfigurationBuilder();</span>
+<span class="fc" id="L39">		cb.setDebugEnabled(true)</span>
+<span class="fc" id="L40">						.setOAuthConsumerKey(&quot;iuh1dBIa8bXvOjBSRLpIF7e40&quot;)</span>
+<span class="fc" id="L41">						.setOAuthConsumerSecret(&quot;GAupJH5iFkWycp9r72dN44Tvd0pO14Tkoi4WSsoMt8dSN4GB3E&quot;)</span>
+<span class="fc" id="L42">						.setOAuthAccessToken(&quot;972273228046569473-4GTgsikGCKHXse3RxzTwqSUk23cEhe8&quot;)</span>
+<span class="fc" id="L43">						.setOAuthAccessTokenSecret(&quot;xctHGp1WG295EARuD7uWKuWJuAI9hgPxmDI0IxmK0ZtAI&quot;);</span>
+		
+		      
+
+<span class="fc" id="L47">		TwitterFactory tf = new TwitterFactory(cb.build());</span>
+<span class="fc" id="L48">		twitter4j.Twitter twitter = tf.getInstance();</span>
+<span class="fc" id="L49">		Query query = new Query(data).resultType(Query.RECENT);</span>
+<span class="fc" id="L50">		query.setCount(10);</span>
+	   
+<span class="fc" id="L52">		return futureResult.completedFuture(twitter.search(query));</span>
+		    
+	}
+	
+	
+	public CompletionStage&lt;String&gt;  getProfile() throws TwitterException  {
+		// TODO Auto-generated method stub
+		
+<span class="fc" id="L60">		CompletableFuture&lt;String&gt; futureProfile = new CompletableFuture&lt;&gt;();</span>
+<span class="fc" id="L61">		ConfigurationBuilder cb = new ConfigurationBuilder();</span>
+<span class="fc" id="L62">		cb.setDebugEnabled(true)</span>
+<span class="fc" id="L63">						.setOAuthConsumerKey(&quot;iuh1dBIa8bXvOjBSRLpIF7e40&quot;)</span>
+<span class="fc" id="L64">						.setOAuthConsumerSecret(&quot;GAupJH5iFkWycp9r72dN44Tvd0pO14Tkoi4WSsoMt8dSN4GB3E&quot;)</span>
+<span class="fc" id="L65">						.setOAuthAccessToken(&quot;972273228046569473-4GTgsikGCKHXse3RxzTwqSUk23cEhe8&quot;)</span>
+<span class="fc" id="L66">						.setOAuthAccessTokenSecret(&quot;xctHGp1WG295EARuD7uWKuWJuAI9hgPxmDI0IxmK0ZtAI&quot;);</span>
+
+<span class="fc" id="L68">		TwitterFactory tf = new TwitterFactory(cb.build());</span>
+<span class="fc" id="L69">		twitter4j.Twitter twitter = tf.getInstance();</span>
+	    
+<span class="fc" id="L71">		User user = twitter.showUser(data);</span>
+<span class="fc" id="L72">	   return	futureProfile.completedFuture(user.getFollowersCount() + &quot; &quot;+ user.getFriendsCount() + &quot; &quot;+ user.getLocation() + &quot; &quot;+ user.getDescription() + &quot; &quot;+ user.getScreenName());		 			    </span>
+		    
+	}
+		
+		public CompletableFuture&lt;List&lt;Status&gt;&gt; getDetails() throws TwitterException{
+<span class="fc" id="L77">			ConfigurationBuilder cb = new ConfigurationBuilder();</span>
+<span class="fc" id="L78">			CompletableFuture&lt;List&lt;Status&gt;&gt; futureStatus = new CompletableFuture&lt;&gt;();</span>
+			
+<span class="fc" id="L80">			cb.setDebugEnabled(true)</span>
+<span class="fc" id="L81">							.setOAuthConsumerKey(&quot;iuh1dBIa8bXvOjBSRLpIF7e40&quot;)</span>
+<span class="fc" id="L82">							.setOAuthConsumerSecret(&quot;GAupJH5iFkWycp9r72dN44Tvd0pO14Tkoi4WSsoMt8dSN4GB3E&quot;)</span>
+<span class="fc" id="L83">							.setOAuthAccessToken(&quot;972273228046569473-4GTgsikGCKHXse3RxzTwqSUk23cEhe8&quot;)</span>
+<span class="fc" id="L84">							.setOAuthAccessTokenSecret(&quot;xctHGp1WG295EARuD7uWKuWJuAI9hgPxmDI0IxmK0ZtAI&quot;);</span>
+<span class="fc" id="L85">			TwitterFactory tf = new TwitterFactory(cb.build());</span>
+			
+			
+<span class="fc" id="L88">			new Thread( () -&gt; {</span>
+
+				try {
+					twitter4j.Twitter twitter = tf.getInstance();
+					futureStatus.complete(twitter.getUserTimeline(data));
+				} catch (TwitterException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+<span class="fc" id="L97">				}).start();</span>
+				
+<span class="fc" id="L99">			return futureStatus;</span>
+			
+		}
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

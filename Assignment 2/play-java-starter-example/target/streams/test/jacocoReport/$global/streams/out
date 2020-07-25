@@ -1,0 +1,9 @@
+[0m[[0m[0minfo[0m] [0m[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m------- Jacoco Coverage Report -------[0m
+[0m[[0m[0minfo[0m] [0m[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mLines: 14.45% (>= required 0.0%) covered, 515 of 602 missed, OK[0m
+[0m[[0m[0minfo[0m] [0m[0mInstructions: 8.74% (>= required 0.0%) covered, 4270 of 4679 missed, OK[0m
+[0m[[0m[0minfo[0m] [0m[0mBranches: 0% (>= required 0.0%) covered, 110 of 110 missed, OK[0m
+[0m[[0m[0minfo[0m] [0m[0mMethods: 10.17% (>= required 0.0%) covered, 159 of 177 missed, OK[0m
+[0m[[0m[0minfo[0m] [0m[0mComplexity: 7.76% (>= required 0.0%) covered, 214 of 232 missed, OK[0m
+[0m[[0m[0minfo[0m] [0m[0mClass: 15.38% (>= required 0.0%) covered, 33 of 39 missed, OK[0m

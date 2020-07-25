@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>main.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">main.template.scala</span></div><h1>main.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import scala.collection.JavaConverters._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+
+<span class="nc" id="L25">object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,Html,play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ */
+  def apply/*7.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
+<span class="nc" id="L34">    _display_ {</span>
+      {
+
+
+<span class="nc" id="L38">Seq[Any](format.raw/*7.32*/(&quot;&quot;&quot;</span>
+
+<span class="nc" id="L40">&quot;&quot;&quot;),format.raw/*9.1*/(&quot;&quot;&quot;&lt;!DOCTYPE html&gt;</span>
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+<span class="nc" id="L43">        &quot;&quot;&quot;),format.raw/*12.62*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L44">        &quot;&quot;&quot;),format.raw/*13.9*/(&quot;&quot;&quot;&lt;title&gt;&quot;&quot;&quot;),_display_(/*13.17*/title),format.raw/*13.22*/(&quot;&quot;&quot;&lt;/title&gt;</span>
+<span class="nc" id="L45">        &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;&quot;&quot;&quot;),_display_(/*14.54*/routes/*14.60*/.Assets.versioned(&quot;stylesheets/main.css&quot;)),format.raw/*14.101*/(&quot;&quot;&quot;&quot;&gt;</span>
+<span class="nc" id="L46">        &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;&quot;&quot;&quot;),_display_(/*15.59*/routes/*15.65*/.Assets.versioned(&quot;images/favicon.png&quot;)),format.raw/*15.104*/(&quot;&quot;&quot;&quot;&gt;</span>
+<span class="nc" id="L47">        &lt;script src=&quot;&quot;&quot;&quot;),_display_(/*16.23*/routes/*16.29*/.Assets.versioned(&quot;javascripts/hello.js&quot;)),format.raw/*16.70*/(&quot;&quot;&quot;&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+    &lt;/head&gt;
+    &lt;body&gt;
+<span class="nc" id="L50">        &quot;&quot;&quot;),format.raw/*20.32*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L51">        &quot;&quot;&quot;),_display_(/*21.10*/content),format.raw/*21.17*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L52">    &quot;&quot;&quot;),format.raw/*22.5*/(&quot;&quot;&quot;&lt;/body&gt;</span>
+&lt;/html&gt;
+&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="nc" id="L59">  def render(title:String,content:Html): play.twirl.api.HtmlFormat.Appendable = apply(title)(content)</span>
+
+<span class="nc" id="L61">  def f:((String) =&gt; (Html) =&gt; play.twirl.api.HtmlFormat.Appendable) = (title) =&gt; (content) =&gt; apply(title)(content)</span>
+
+<span class="nc" id="L63">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  DATE: Tue Apr 10 17:56:28 EDT 2018
+                  SOURCE: C:/Users/Arvin/Desktop/Sem5/App/Version 2.1_Hamburger/play-java-starter-example/app/views/main.scala.html
+                  HASH: 6ea0cc6fffc14ad60386de863a153b880fcdcbb3
+                  MATRIX: 1206-&gt;260|1331-&gt;290|1359-&gt;292|1439-&gt;397|1475-&gt;406|1510-&gt;414|1536-&gt;419|1625-&gt;481|1640-&gt;487|1703-&gt;528|1791-&gt;589|1806-&gt;595|1867-&gt;634|1919-&gt;659|1934-&gt;665|1996-&gt;706|2090-&gt;862|2127-&gt;872|2155-&gt;879|2187-&gt;884
+                  LINES: 33-&gt;7|38-&gt;7|40-&gt;9|43-&gt;12|44-&gt;13|44-&gt;13|44-&gt;13|45-&gt;14|45-&gt;14|45-&gt;14|46-&gt;15|46-&gt;15|46-&gt;15|47-&gt;16|47-&gt;16|47-&gt;16|50-&gt;20|51-&gt;21|51-&gt;21|52-&gt;22
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

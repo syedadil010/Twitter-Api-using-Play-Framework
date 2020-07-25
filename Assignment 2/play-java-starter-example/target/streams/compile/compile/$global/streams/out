@@ -1,0 +1,11 @@
+[0m[[0m[33mwarn[0m] [0m[0mbootstrap class path not set in conjunction with -source 8[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\app\actors\MyWebSocketActor.java:156:1: put(java.lang.String,com.fasterxml.jackson.databind.JsonNode) in com.fasterxml.jackson.databind.node.ObjectNode has been deprecated[0m
+[0m[[0m[33mwarn[0m] [0m[0m			  response.put("response" , Json.toJson(s));[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\app\actors\MyWebSocketActor.java:167:1: put(java.lang.String,com.fasterxml.jackson.databind.JsonNode) in com.fasterxml.jackson.databind.node.ObjectNode has been deprecated[0m
+[0m[[0m[33mwarn[0m] [0m[0m				  response.put("response" , Json.toJson(s));[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\app\controllers\HomeController.java:156:1: redundant cast to java.util.concurrent.CompletableFuture<java.util.List<twitter4j.Status>>[0m
+[0m[[0m[33mwarn[0m] [0m[0m    	CompletableFuture<List<Status>> FutureList = (CompletableFuture<List<Status>>) tweet.getDetails();[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\app\twitter\Twitter.java:56:1: static method should be qualified by type name, java.util.concurrent.CompletableFuture, instead of by an expression[0m
+[0m[[0m[33mwarn[0m] [0m[0m		return futureResult.completedFuture(twitter.search(query));[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\app\twitter\Twitter.java:80:1: static method should be qualified by type name, java.util.concurrent.CompletableFuture, instead of by an expression[0m
+[0m[[0m[33mwarn[0m] [0m[0m	   return	futureProfile.completedFuture(user.getFollowersCount() + " "+ user.getFriendsCount() + " "+ user.getLocation() + " "+ user.getDescription() + " "+ user.getScreenName());		 			    [0m

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="DESKTOP-LGR5PVC" name="Twitteractortesting" tests="1" errors="0" failures="1" skipped="0" time="1.143">
+                     <properties>
+      <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/><property name="java.specification.version" value="10"/><property name="sun.cpu.isalist" value="amd64"/><property name="sun.jnu.encoding" value="Cp1252"/><property name="sbt.log.format" value="true"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="http://java.oracle.com/"/><property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-10\bin"/><property name="sun.java.command" value="xsbt.boot.Boot"/><property name="jdk.debug" value="release"/><property name="sun.stderr.encoding" value="cp437"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2018-03-20"/><property name="java.home" value="C:\Program Files\Java\jdk-10"/><property name="file.separator" value="\"/><property name="java.vm.compressedOopsMode" value="32-bit"/><property name="line.separator" value="
+"/><property name="sun.stdout.encoding" value="cp437"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="user.script" value=""/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="10+46"/><property name="user.name" value="syeda"/><property name="file.encoding" value="Cp1252"/><property name="jnidispatch.path" value="C:\Users\syeda\AppData\Local\Temp\jna-109909884\jna9416155486440648515.dll"/><property name="java.vendor.version" value="18.3"/><property name="jna.loaded" value="true"/><property name="java.io.tmpdir" value="C:\Users\syeda\AppData\Local\Temp\"/><property name="java.version" value="10"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/><property name="sun.os.patch.level" value=""/><property name="java.library.path" value="C:\Program Files\Java\jdk-10\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk-10\bin;C:\Users\syeda\AppData\Local\Microsoft\WindowsApps;;."/><property name="java.vendor" value="Oracle Corporation"/><property name="sun.io.unicode.encoding" value="UnicodeLittle"/><property name="sun.desktop" value="windows"/><property name="file.encoding.pkg" value="sun.io"/><property name="java.class.path" value="C:\Users\syeda\Desktop\final1\New folder\play-java-starter-example\sbt-dist\bin\sbt-launch.jar"/><property name="java.vm.vendor" value="&quot;Oracle Corporation&quot;"/><property name="user.variant" value=""/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="America/New_York"/><property name="os.name" value="Windows 10"/><property name="java.vm.specification.version" value="10"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="GB"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="C:\Users\syeda"/><property name="user.language" value="en"/><property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/><property name="jline.esc.timeout" value="0"/><property name="path.separator" value=";"/><property name="os.version" value="10.0"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/><property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/><property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/><property name="user.dir" value="C:\Users\syeda\Desktop\final1\New folder\play-java-starter-example"/><property name="os.arch" value="amd64"/><property name="java.vm.info" value="mixed mode"/><property name="java.vm.version" value="10+46"/><property name="java.class.version" value="54.0"/>
+    </properties>
+                     <testcase classname="Twitteractortesting" name="testHelloActor" time="1.143">
+                                                 <failure message="java.util.concurrent.ExecutionException: akka.pattern.AskTimeoutException: Ask timed out on [Actor[akka://default/user/TwitterResultActor#1810970749]] after [1000 ms]. Sender[null] sent message of type &quot;java.lang.String&quot;." type="sbt.ForkMain$ForkError">sbt.ForkMain$ForkError: java.util.concurrent.ExecutionException: akka.pattern.AskTimeoutException: Ask timed out on [Actor[akka://default/user/TwitterResultActor#1810970749]] after [1000 ms]. Sender[null] sent message of type &quot;java.lang.String&quot;.
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1999)
+	at scala.concurrent.java8.FuturesConvertersImpl$CF.super$get(FutureConvertersImpl.scala:82)
+	at scala.concurrent.java8.FuturesConvertersImpl$CF.$anonfun$get$1(FutureConvertersImpl.scala:82)
+	at scala.concurrent.BlockContext$DefaultBlockContext$.blockOn(BlockContext.scala:53)
+	at scala.concurrent.package$.blocking(package.scala:142)
+	at scala.concurrent.java8.FuturesConvertersImpl$CF.get(FutureConvertersImpl.scala:82)
+	at Twitteractortesting.testHelloActor(Twitteractortesting.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at com.novocode.junit.JUnitRunner$1.execute(JUnitRunner.java:132)
+	at sbt.ForkMain$Run$2.call(ForkMain.java:300)
+	at sbt.ForkMain$Run$2.call(ForkMain.java:290)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1135)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: sbt.ForkMain$ForkError: akka.pattern.AskTimeoutException: Ask timed out on [Actor[akka://default/user/TwitterResultActor#1810970749]] after [1000 ms]. Sender[null] sent message of type &quot;java.lang.String&quot;.
+	at akka.pattern.PromiseActorRef$.$anonfun$defaultOnTimeout$1(AskSupport.scala:595)
+	at akka.pattern.PromiseActorRef$.$anonfun$apply$1(AskSupport.scala:605)
+	at akka.actor.Scheduler$$anon$4.run(Scheduler.scala:140)
+	at scala.concurrent.Future$InternalCallbackExecutor$.unbatchedExecute(Future.scala:866)
+	at scala.concurrent.BatchingExecutor.execute(BatchingExecutor.scala:109)
+	at scala.concurrent.BatchingExecutor.execute$(BatchingExecutor.scala:103)
+	at scala.concurrent.Future$InternalCallbackExecutor$.execute(Future.scala:864)
+	at akka.actor.LightArrayRevolverScheduler$TaskHolder.executeTask(LightArrayRevolverScheduler.scala:328)
+	at akka.actor.LightArrayRevolverScheduler$$anon$4.executeBucket$1(LightArrayRevolverScheduler.scala:279)
+	at akka.actor.LightArrayRevolverScheduler$$anon$4.nextTick(LightArrayRevolverScheduler.scala:283)
+	at akka.actor.LightArrayRevolverScheduler$$anon$4.run(LightArrayRevolverScheduler.scala:235)
+	... 1 more
+</failure>
+                                               </testcase>
+                     <system-out><![CDATA[]]></system-out>
+                     <system-err><![CDATA[]]></system-err>
+                   </testsuite>
